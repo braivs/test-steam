@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { addElement, removeElement } from '../store/slices/elementSlice';
 import { Element } from '../store/slices/elementSlice';
-import styles from './ElementList.module.css'
+import s from './ElementList.module.css'
 import {RootState} from "../store/store"
 
 const ElementList: React.FC = () => {
@@ -22,18 +22,17 @@ const ElementList: React.FC = () => {
   };
 
   return (
-    <div className={styles.container}>
-      <div>HI from ElementList</div>
-      <div className={styles.buttons}>
+    <div className={s.container}>
+      <div className={s.buttons}>
         <button onClick={handleAdd}>Добавить</button>
         <button onClick={handleRemove}>Удалить</button>
       </div>
-      <div className={styles.listContainer}>
-        <div className={`${styles.list} ${animate ? styles.animate : ''}`}>
+      <div className={s.listContainer}>
+        <div className={`${s.list} ${animate ? s.animate : ''}`}>
           {elements.map((element: Element) => (
             <div
               key={element.id}
-              className={styles.listItem}
+              className={s.listItem}
               style={{ backgroundColor: element.color }}
             ></div>
           ))}

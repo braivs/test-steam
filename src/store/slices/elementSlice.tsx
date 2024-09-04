@@ -1,12 +1,12 @@
 // src/store/slices/elementSlice.ts
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-export interface Element {
-  id: number;
-  color: string;
+export type Element = {
+  id: number
+  color: string
 }
 
-interface ElementState {
+export type ElementState = {
   elements: Element[];
 }
 
