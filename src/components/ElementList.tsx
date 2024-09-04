@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import {addElement, removeElement, selectElements,} from '../store/slices/elementSlice'
 import { Element } from '../store/slices/elementSlice';
-import styles from './ElementList.module.css';
+import s from './ElementList.module.css';
 
 const ElementList: React.FC = () => {
   const dispatch = useDispatch();
@@ -18,26 +18,26 @@ const ElementList: React.FC = () => {
   };
 
   return (
-    <div className={styles.container}>
-      <div className={styles.buttons}>
+    <div className={s.container}>
+      <div className={s.buttons}>
         <button onClick={handleAdd}>Добавить</button>
         <button onClick={handleRemove}>Удалить</button>
       </div>
-      <div className={styles.listContainer}>
-        <TransitionGroup className={styles.list}>
+      <div className={s.listContainer}>
+        <TransitionGroup className={s.list}>
           {elements.map((element: Element) => (
             <CSSTransition
               key={element.id}
               timeout={500}
               classNames={{
-                enter: styles.itemEnter,
-                enterActive: styles.itemEnterActive,
-                exit: styles.itemExit,
-                exitActive: styles.itemExitActive,
+                enter: s.itemEnter,
+                enterActive: s.itemEnterActive,
+                exit: s.itemExit,
+                exitActive: s.itemExitActive,
               }}
             >
               <div
-                className={styles.listItem}
+                className={s.listItem}
                 style={{ backgroundColor: element.color }}
               ></div>
             </CSSTransition>
