@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/test-steam/static/css/main.b129df1b.css",
+    "main.js": "/test-steam/static/js/main.ed1cae97.js",
+    "index.html": "/test-steam/index.html",
+    "main.b129df1b.css.map": "/test-steam/static/css/main.b129df1b.css.map",
+    "main.ed1cae97.js.map": "/test-steam/static/js/main.ed1cae97.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.b129df1b.css",
+    "static/js/main.ed1cae97.js"
+  ]
+}
