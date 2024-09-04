@@ -1,42 +1,48 @@
-// src/components/ElementList.tsx
-import React, { useState } from 'react';
+import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { addElement, removeElement } from '../store/slices/elementSlice';
+import { CSSTransition, TransitionGroup } from 'react-transition-group';
+import {addElement, removeElement, selectElements,} from '../store/slices/elementSlice'
 import { Element } from '../store/slices/elementSlice';
-import s from './ElementList.module.css'
-import {RootState} from "../store/store"
+import styles from './ElementList.module.css';
 
 const ElementList: React.FC = () => {
   const dispatch = useDispatch();
-  const elements = useSelector((state: RootState) => state.elements.elements);
-  const [animate, setAnimate] = useState(false);
+  const elements = useSelector(selectElements);
 
   const handleAdd = () => {
-    setAnimate(true); // Запуск анимации добавления
     dispatch(addElement());
   };
 
   const handleRemove = () => {
-    setAnimate(false); // Запуск анимации удаления
     dispatch(removeElement());
   };
 
   return (
-    <div className={s.container}>
-      <div className={s.buttons}>
+    <div className={styles.container}>
+      <div className={styles.buttons}>
         <button onClick={handleAdd}>Добавить</button>
         <button onClick={handleRemove}>Удалить</button>
       </div>
-      <div className={s.listContainer}>
-        <div className={`${s.list} ${animate ? s.animate : ''}`}>
+      <div className={styles.listContainer}>
+        <TransitionGroup className={styles.list}>
           {elements.map((element: Element) => (
-            <div
+            <CSSTransition
               key={element.id}
-              className={s.listItem}
-              style={{ backgroundColor: element.color }}
-            ></div>
+              timeout={500}
+              classNames={{
+                enter: styles.itemEnter,
+                enterActive: styles.itemEnterActive,
+                exit: styles.itemExit,
+                exitActive: styles.itemExitActive,
+              }}
+            >
+              <div
+                className={styles.listItem}
+                style={{ backgroundColor: element.color }}
+              ></div>
+            </CSSTransition>
           ))}
-        </div>
+        </TransitionGroup>
       </div>
     </div>
   );

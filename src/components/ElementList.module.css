@@ -18,38 +18,35 @@
 
 .list {
     display: flex;
-    width: 100%;
-    transition: transform 0.5s ease-out;
-}
-
-.animate .listItem {
-    animation: slideIn 0.5s ease-out forwards;
-}
-
-@keyframes slideIn {
-    from {
-        transform: translateX(-100%);
-    }
-    to {
-        transform: translateX(0);
-    }
+    width: auto;
 }
 
 .listItem {
-    width: 20%;
-    height: 100px;
+    width: 20vw;
+    height: 20vw;
     margin-right: 10px;
+    flex-shrink: 0;
+    background-color: red; /* Цвет фона по умолчанию, можно удалить или заменить */
 }
 
-@keyframes slideOut {
-    from {
-        transform: translateX(0);
-    }
-    to {
-        transform: translateX(100%);
-    }
+.itemEnter {
+    opacity: 0;
+    transform: translateX(-100%);
 }
 
-.listItem:last-child {
-    animation: slideOut 0.5s ease-out forwards;
+.itemEnterActive {
+    opacity: 1;
+    transform: translateX(0);
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+}
+
+.itemExit {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.itemExitActive {
+    opacity: 0;
+    transform: translateX(100%);
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
 }

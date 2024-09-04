@@ -1,5 +1,6 @@
 // src/store/slices/elementSlice.ts
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
+import {RootState} from "../store"
 
 export type Element = {
   id: number
@@ -32,4 +33,5 @@ const elementSlice = createSlice({
 });
 
 export const { addElement, removeElement } = elementSlice.actions;
+export const selectElements = (state: RootState) => state.elements.elements;
 export const elementReducer = elementSlice.reducer;
