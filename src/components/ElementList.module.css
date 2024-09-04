@@ -1,0 +1,55 @@
+/* src/styles/App.module.css */
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.buttons {
+    margin-bottom: 20px;
+}
+
+.listContainer {
+    display: flex;
+    overflow: hidden;
+    width: 100%;
+}
+
+.list {
+    display: flex;
+    width: 100%;
+    transition: transform 0.5s ease-out;
+}
+
+.animate .listItem {
+    animation: slideIn 0.5s ease-out forwards;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(-100%);
+    }
+    to {
+        transform: translateX(0);
+    }
+}
+
+.listItem {
+    width: 20%;
+    height: 100px;
+    margin-right: 10px;
+}
+
+@keyframes slideOut {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(100%);
+    }
+}
+
+.listItem:last-child {
+    animation: slideOut 0.5s ease-out forwards;
+}
